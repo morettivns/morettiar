@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css_index.css">
+    <link rel="icon" href="floco.png">
+    <title>MorettiAr</title>
+  
+</head>
+<body id="body">
+
+    <div class="header" id="header">
+
+        <button onclick="toggleSidebar()" class="btn_icon_header">
+            <img src="imagens/menu.png" alt="menu" id="menu_icon">
+        </button>
+
+        <!--Logo do cabeçalho-->
+        <div class="logo_header">
+            <img src="imagens/morettiar.png" alt="logo morettiar" class="img_logo_header" id="logo_moretti"> <!--Logo-->
+        </div>
+
+            <div class="header_navegacao" id="header_navegacao"> <!--Será o menu de navegação do header (classe dentro de header)-->
+
+                <button onclick="toggleSidebar()" class="btn_icon_header"> <!--"onclick" eecuta uma função ao botão ser clicado-->
+                    <p id="x_i">x</p> <!--Será o icone para fechar a aba do menu-->
+                </button>
+
+                <!--Área de links que ficarão no menu ou header-->
+                <a href="#" class="home_btn">Início</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="novidades.html">Novidades</a>
+                <a href="contato.html">Contato</a>
+                <a href="https://www.google.com.br/maps/place/R.+Otávio+Tarquino,+994+-+Centro,+Nova+Iguaçu+-+RJ,+26215-342/@-22.7530995,-43.4448401,3a,75y,136.31h,84.25t/data=!3m6!1e1!3m4!1srlH7Bx_was2wGEeZCV7JhQ!2e0!7i16384!8i8192!4m7!3m6!1s0x9966534849a7d5:0x7bee3a1d9887ee4f!8m2!3d-22.7531813!4d-43.4447369!10e5!16s%2Fg%2F11bw448zp8" class="local_i" id="local_i">Localização</a>
+        </div>
+    </div>
+
+        <!--Conteudo da página-->
+    <div class="separar" id="separar">
+
+        <div tabindex="0" class="conteudo" onfocus="closeSidebar()" id="conteudo"> <!--tabindex = "0" deixará esse div na camada 0-->
+            <!--O "onfocus" acima irá fazer com que ao receber foco (ser clicado por exemplo) o div execute uma função (nesse caso fechar a função "closeSidebar")-->
+
+            <!--Texto a direita-->
+            <h1 class="slideleft">Bem vindo a<br><span>Moretti<span id="ar">Ar❄</span></span></h1>
+            <p class="slideleft" id="slw">Contamos com Serviços especializados para o ar-condicionado do seu veículo.</p>
+        </div>
+
+        <!--Texto a esquerda-->
+        <div class="texto2 slw3"> <!--Podemos adicionar mais de uma classe por div-->
+            <h1>Um pouco sobre nós:</h1>
+            <p>Presente no mercado desde 1991, contamos com serviço de qualidade, experiênciado por mais de 14 mil clientes registrados ao longo dos anos.</p>
+            <br>
+            <img src="imagens/pai.png" alt="" class="pai_img">
+            <br>
+            <p>Desde seu primeiro dia com o mesmo dono Jorge Moretti a gerenciando, a Morettiar se aprimora cada dia mais em busca de atender a todas as demandas propostas por seus clientes.</p><br>
+        </div>
+    </div>
+</body>
+
+<script>
+    let header           = document.getElementById('header'); //Irá transformar as classes acima em variáveis
+    let header_navegacao = document.getElementById('header_navegacao');
+    let separar          = document.getElementById('separar');
+    
+    let showSidebar      = false; //showSidebar será a responsável pela animação do menu responsivo
+
+    function toggleSidebar() //As funções irão fazer com que ações ocorram de acordo com clicks ou outros
+    {
+        showSidebar = !showSidebar; //Irá transformar showSidebar no oposto atual
+
+        if(showSidebar) //Se estiver como verdadeiro, irá mudar o local do menu responsívo para -10vw que se encaiará perfeitamente a tela
+        {
+            header_navegacao.style.marginLeft = '-10vw';
+            header_navegacao.style.animationName = 'showSidebar'; 
+            //e irá iniciar a animação @keyframe showSidebar, que irá o mover de fora, para dentro da tela
+
+            separar.style.filter = 'blur(2px'; // ira borrar o div conteúdo
+            logo_moretti.style.filter = 'blur(2px)'; //junto com a imagem da logo (que não está presente no div acima)
+        }
+        else //Caso showSidebar seja negativo, irá mudar o local do menu responsivo para fora da tela.
+        {
+            header_navegacao.style.marginLeft = '-100vw'; //essa parte deixará a barra de menu escondida a menos 100vw (fora da tela) e quando acionado a trará para -10vw (dentro da tela)
+            header_navegacao.style.animationName = ''; //Sem uma animação.
+            
+            separar.style.filter = ''; //E zerando os filtros aplicados anteriormente ao utilizar as aspas vazias.
+            logo_moretti.style.filter = '';
+        }
+    }
+
+    function closeSidebar() //Fechará a sidebar, ao ser acionada
+    {
+        if(showSidebar)
+        {
+            showSidebar = true; //Transformará a sideBar em true novamente
+            toggleSidebar(); //e ao chamar a função toggleSidebar a transformará em falsa, caindo assim no "else" e executando-o.
+        }
+    }
+
+    //Solução de um problema
+    window.addEventListener('resize', function(event) {
+        if(window.innerWidth > 768 && showSidebar) //quando a tela crescer e estiver com a função menu aberta, o fecha.
+        {  
+            showSidebar = true;
+            toggleSidebar();
+            
+        }
+    });
+</script>
+</html>

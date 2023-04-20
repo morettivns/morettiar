@@ -1,0 +1,242 @@
+    *{ 
+        margin: 0;  /*Zerar as margens e paddings por padra~afim de evitar conflitos nos divs*/
+        padding: 0;
+    }
+
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: linear-gradient(to right, #001d3d, #001d3d, #001d3d, #003566, #003566);
+        color: #fff;
+        z-index: -2; /*overflow: hidden;*/
+    }
+
+    /*Cabeçalho*/
+    .img_logo_header{
+        width: 90px;
+        transition: 1s;
+        padding: 120x;
+        margin-right: 20px;
+    }
+
+    .header{ /*Essas serão as configurações do cabeçalho*/
+        display: flex; /*Display flex coloca por padrão as informações antes em vertical, em horizontal, que nesse caso será nossos links e logo*/
+        flex-direction: row; /*Se colocado em "column" irá para o modo coluna*/
+        align-items: center;
+        background-image: linear-gradient(to left, #000814, #001d3d);
+        justify-content: space-between; /*Irá separar os elementos contidos no display flex*/
+        padding: 0 10%; /*O padding de top e bottom será de 0 e o de left e right será 10% de nosso header*/
+        height: 56px; /*Grossura da barra de header*/
+        box-shadow: 1px 1px 4px var(--color-dark4);
+    }
+    .header_navegacao{ /*Configurações dos links do cabeçalho*/
+        display: flex;
+        flex-direction: row;
+        align-items: center; /*Deixa os itens centralizados no eixo x*/
+        gap: 56px; /*Separação entre os links da página*/
+        z-index: 2; /*Irá definir uma camada para a barra de navegação*/
+    }
+    .header_navegacao a{
+        text-decoration: none; /*Irá remorar a decoração debaio do link*/
+        color: #fff;
+        transition: 1s; /*Duração caso alguma transição for feita*/
+        font-weight: bold; /*Deixa o texto em negrito*/
+    }
+    .header_navegacao a:hover{
+    /*Ao passar o mouse sobre um dos links (hover) a cor do link muderá, e comado ao transition acima, essa mudança levará 1 segundo*/
+        color:  #ffd60a;
+    }
+    
+    .home_btn{ /*O botão de home será diferente dos demais*/
+        background: #ee9b00;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .local_i{ /*O botão de local também será diferente dos demais*/
+        background: #ef233c;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .btn_icon_header{ /*Será utilizado para responsividade*/
+        background: transparent; /*Essa classe deixará a imagem do x, invisivil e indisponivel para o click para que ela exista no media carry*/
+        border: none;
+        color: #fff;
+        cursor: pointer; /*deixa o cursor em modo onteiro (normal) ara não haver suspeita sobre a existência do elemento*/
+        display: none;
+    }
+
+    #menu_icon{ /*Icone do menu*/
+        height: 5%;
+        width: 5%;
+        float: left;
+    }
+    #x_i{ /*O "x" para fechar o menu*/
+        font-size: 26px;
+        font-weight: 400;
+    }
+
+
+    /*Conteúdo da página*/
+    .separar{
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        transition: 0.3s;
+    }
+    .conteudo{ /*Será o conteudo do site*/
+        float: right;
+        margin-left: 0%; margin-top: 2%; margin-bottom: 0%;
+        text-align: center;
+        height: 50vh;
+        width: 100%;
+        transition: 1s; /*Caso o conteudo da página sofra transições elas irão demorar 1segundo*/
+
+    }
+    .conteudo h1{
+        background-image: linear-gradient(to right,#086375, #1dd3b0);
+        background-clip: text;
+        -webkit-background-clip: text; /*Esses códigos acima são utilizados para dar um efeito gradiente ao texto*/
+        -webkit-text-fill-color: transparent; /*Basicamente, definem um background, ajustam ao tamanho do texto, e deixa o texto invisivel*/
+
+        font-size: 80px;
+        line-height: 100px;
+        font-weight: 400;
+    }
+    .conteudo p{
+        max-width: 500px;
+        line-height: 28px;
+
+    }
+    .conteudo span{
+        font-weight: 600;
+    }
+    #ar{
+        background-image: linear-gradient(to right, #72efdd, #64dfdf);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .servicos{
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr, 1fr;
+        grid-template-rows: 1fr, 0.1fr;
+        grid-template-areas: 
+        "esquerda direita"
+        "esquerda direita";
+    }
+    .esquerda{
+        text-align: center;
+        padding: 20px;
+        grid-area: "esquerda";
+    }
+    .direita{
+        text-align: center;
+        padding: 20px;
+        grid-area: "direita";
+    }
+
+    .link_saiba_mais{
+        text-decoration: none;
+        background: #1dd3b0;
+        color: #fff;
+        padding: 7px;
+        border-radius: 10px;
+    }
+    .link_saiba_mais:hover{
+        color: #003566;
+        transition: 1s;
+    }
+    .spc{
+        padding: 7px;
+    }
+    .pai_img{
+        height: 300px;
+        width: 460px;
+        border-radius: 20px;
+        float: center;
+        margin-bottom: 10px;
+        transition: 1s;
+    }
+    .pai_img:hover{
+        transform: scale3d(1.05,1.05,1);
+    }
+    .weak{
+        font-weight: 300;
+    }
+
+    .slideleft{
+        animation: slideleft/*Nome da animação*/ 1s/*Duração*/ linear forwards;
+        margin: 10px;
+    }
+    .slw{
+        animation: slideleft 1.5s linear forwards; /*id criado para desacelerar o texto em slw*/
+        font-weight: 400;
+    }
+    .slw3{
+        animation: slideleft 2.5s linear forwards;
+    }
+    .center{
+        text-align: center;
+    }
+
+/*Responsividade e animação*/
+    @media screen and (max-width: 768px) { /*Quando a max-width não ultrapassar 768px, seguir as seguintes*/
+    body{
+        background-image: linear-gradient(to bottom, #001d3d, #001d3d, #001d3d); /*003566*/
+    }
+    .header_navegacao{
+        position: absolute; /*Sobrepondo*/
+        flex-direction: column !important; /*O "!important irá sobrepor qualquer outro estilo antes posto adicionando o fator importancia*/
+        top: 0; /*Colado ao topo*/
+        background-image: linear-gradient(to bottom left, #001d3d, #003566 );
+        height: 183%;
+        width: 35vw;
+        padding: 1em;
+        animation-duration: 1s;
+        margin-left: -100vw;
+        }
+    .img_logo_header{
+        margin-right: 0px;
+    }
+    .btn_icon_header{
+        display: block;
+    }
+
+    .separar{
+        display: flex;
+        flex-direction: column;
+        transition: 1s;
+        background-color: transparent;
+    }
+    .trabalho{
+        width:50%; padding: 0%;
+        padding: 0%; margin: 0%;
+    }
+    .servicos{
+        display: flex;
+        flex-direction: column;
+    }
+    .pai_img{
+        height: 270px;
+        width: 410px;
+        border-radius: 12%;
+        float: center;
+    }
+    }
+
+    @keyframes showSidebar {
+        from {margin-left: -100vw;}
+        to {margin-left: -10vw;}
+    }
+
+    @keyframes slideleft {
+        0%{
+            transform: translate(100px);
+            opacity: 0;
+        }
+        100%{
+            transform: translate(0px);
+            opacity: 1;
+        }
+    }
